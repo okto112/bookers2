@@ -1,3 +1,7 @@
+<aside>
+   <%= render 'layouts/side', user: @user, new: @new %>
+</aside>
+
 <% @books.each do |books| %>
 <div>
   <p>投稿ユーザー画像：<%= image_tag books.user.get_profile_image(100,100) %></p>
