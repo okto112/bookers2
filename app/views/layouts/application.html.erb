@@ -26,8 +26,6 @@
           <%= link_to 'Books', books_path %>
         </li>
         <li>
-          <%= link_to '投稿フォーム', new_book_path %>
-        </li>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
@@ -45,6 +43,10 @@
         </li>
       <% end %>
     </header>
+
+    <aside>
+      <%= render 'layouts/side', user: @user, new: @new %>
+    </aside>
 
     <main>
       <div>
