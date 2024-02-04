@@ -12,68 +12,96 @@
   </head>
 
   <body>
-    <header>
-      <li>
-        <%= link_to 'Bookers', root_path %>
-      </li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to user_path(current_user.id) do %>
-            <i class="fa-solid fa-house"></i>
-            Home
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fa-solid fa-users"></i>
-            Users
-          <% end %>
-        </li>
-        <li>
-          <%= link_to books_path do %>
-            <i class="fa-solid fa-book-open"></i>
-            Books
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Log out
-          <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to root_path do %>
-            <i class="fa-solid fa-house"></i>
-            Home
-          <% end %>
-        </li>
-        <li>
-          <%= link_to about_path do %>
-            <i class="fa-solid fa-link"></i>
-            About
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <i class="fa-solid fa-user-plus"></i>
-            Sign up
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-            <i class="fa-solid fa-right-to-bracket"></i>
-            Log in
-          <% end %>
-        </li>
-      <% end %>
+    <header class="header bg-dark mb-3">
+      <div class="container">
+        <div class="row px-1 py-3">
+          <div class="col-3">
+            <div class="logo">
+              <%= link_to 'Bookers', root_path, class:"text-light" %>
+            </div>
+          </div>
+          <div class="col-5 offset-4">
+            <div class="row">
+              <% if user_signed_in? %>
+                <div class="col-3">
+                  <div class="header-content">
+                     <%= link_to user_path(current_user.id), class:"text-light" do %>
+                      <i class="fa-solid fa-house"></i>
+                      Home
+                     <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to users_path, class:"text-light" do %>
+                      <i class="fa-solid fa-users"></i>
+                      Users
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to books_path, class:"text-light" do %>
+                      <i class="fa-solid fa-book-open"></i>
+                      Books
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to destroy_user_session_path, method: :delete, class:"text-light" do %>
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                      Log out
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to root_path, class:"text-light" do %>
+                      <i class="fa-solid fa-house"></i>
+                      Home
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to about_path, class:"text-light" do %>
+                      <i class="fa-solid fa-link"></i>
+                      About
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to new_user_registration_path, class:"text-light" do %>
+                      <i class="fa-solid fa-user-plus"></i>
+                      Sign up
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="header-content">
+                    <%= link_to new_user_session_path, class:"text-light" do %>
+                      <i class="fa-solid fa-right-to-bracket"></i>
+                      Log in
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
-      <div>
-        <%= flash[:notice] %>
+      <div class="container-fluid">
+        <div>
+           <%= flash[:notice] %>
+        </div>
+        <%= yield %>
       </div>
-    <%= yield %>
     </main>
   </body>
 </html>

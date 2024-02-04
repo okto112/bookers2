@@ -1,13 +1,19 @@
-<h1>welcome to <i class="fa-solid fa-book"></i>Bookers !!</h1>
-<p>In <i class="fa-solid fa-book"></i>Bookers,</p>
-<p>you can share and exchange your opinions , inpressions , and emotions</p>
-<p>about various books!</p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <h1>welcome to <i class="fa-solid fa-book"></i>Bookers !!</h1>
+      <p>In <i class="fa-solid fa-book"></i>Bookers,</p>
+      <p>you can share and exchange your opinions , inpressions , and emotions</p>
+      <p>about various books!</p>
 
-<li>
-  <%= link_to "Log in", new_user_session_path %>
-</li>
-<li>
-  <%= link_to "Sign up", new_user_registration_path %>
-</li>
+      <div class="row justify-content-md-center">
+        <%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm w-75 mb-3" %>
+      </div>
+      <div class="row justify-content-md-center">
+        <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success btn-sm w-75 mb-5" %>
+      </div>
 
-<p>CopyRight Infratop.inc</p>
+      <p class="row justify-content-md-center">CopyRight Infratop.inc</p>
+    </div>
+  </div>
+</div>
