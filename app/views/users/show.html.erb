@@ -1,13 +1,40 @@
-<aside>
-   <%= render 'layouts/side', user: @user, new: @new %>
-</aside>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside>
+         <%= render 'layouts/side', user: @user, new: @new %>
+      </aside>
+    </div>
 
-<% @books.each do |books| %>
-<div>
-  <p>投稿ユーザー画像：<%= image_tag books.user.get_profile_image(100,100) %></p>
-  <%= link_to book_path(books.id) do %>
-    <p>本のタイトル：<%= books.title %></p>
-  <% end %>
-  <p>感想：<%= books.body %></p>
+    <div class="offset-md-1"></div>
+
+    <div class="col-md-8">
+      <h2>Books</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @books.each do |books| %>
+          <tr>
+            <td><%= image_tag books.user.get_profile_image(100,100) %></td>
+            <td>
+              <%= link_to book_path(books.id) do %>
+                <%= books.title %>
+              <% end %>
+            </td>
+            <td><%= books.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
-<% end %>
