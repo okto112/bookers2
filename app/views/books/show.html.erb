@@ -25,8 +25,8 @@
             <td><%= @book.title %></td>
             <td><%= @book.body %></td>
             <% if @book.user == current_user %>
-              <td><%= link_to "編集", edit_book_path(@book.id) %></td>
-              <td><%= link_to "削除", book_path(@book), method: :delete %></td>
+              <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger btn-sm" %></td>
             <% end %>
           </tr>
         </tbody>

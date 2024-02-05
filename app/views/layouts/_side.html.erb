@@ -34,8 +34,8 @@
 
 <%= form_with model: new do |f| %>
   <p>Title</p>
-  <%= f.text_field :title, class:"w-100" %>
+  <%= f.text_field :title, class:"form-control w-100" %>
   <p>Opinion</p>
-  <%= f.text_area :body, class:"w-100  mb-3" %>
+  <%= f.text_area :body, class:"form-control w-100  mb-3" %>
   <%= f.submit 'Create Book', class:"btn btn-success" %>
 <% end %>

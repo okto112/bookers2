@@ -1,16 +1,26 @@
-<h1>編集画面</h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-5">
+    <h1>Editing Book</h1>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-5">
+    <%= form_with model: @book do |f| %>
 
-<%= form_with model: @book do |f| %>
+      <p class="mb-1">Title</p>
+      <%= f.text_field :title, class:"form-control w-100 mb-3" %>
 
-  <h4>本のタイトル</h4>
-  <%= f.text_field :title %>
+      <p class="mb-1">Opinion</p>
+      <%= f.text_area :body, class:"form-control w-100 mb-3" %>
 
-  <h4>感想</h4>
-  <%= f.text_area :body %>
+      <p><%= f.submit 'Update Book', class:"btn btn-success" %></p>
 
-  <h4>投稿ユーザー画像</h4>
-  <%= f.file_field :image, placeholder: "投稿画像", accept: "image/*" %>
+    <% end %>
 
-  <%= f.submit '保存' %>
-
-<% end %>
+    <%= link_to 'Show', book_path(@book.id) %>
+    |
+    <%= link_to 'Back', books_path %>
+    </div>
+  </div>
+</div>
