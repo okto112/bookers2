@@ -1,14 +1,40 @@
-<aside>
-   <%= render 'layouts/side', user: @user, new: @new %>
-</aside>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside>
+         <%= render 'layouts/side', user: @user, new: @new %>
+      </aside>
+    </div>
 
-<h1>Books</h1>
-<% @books.each do |book| %>
-  <div>
-    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-    <%= link_to book_path(book.id) do %>
-      <p>Title：<%= book.title %></p>
-    <% end %>
-    <p>Opinion：<%= book.body %></p>
+    <div class="offset-md-1"></div>
+
+    <div class="col-md-8">
+      <h2>Books</h2>
+
+      <table  class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+              <td>
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
+              </td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
   </div>
-<% end %>
+</div>

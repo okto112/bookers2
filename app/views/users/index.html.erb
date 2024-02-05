@@ -1,11 +1,35 @@
-<aside>
-   <%= render 'layouts/side', user: @user, new: @new %>
-</aside>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside>
+         <%= render 'layouts/side', user: @user, new: @new %>
+      </aside>
+    </div>
 
-<% @users.each do |user| %>
-  <div>
-    <p>image:<%= image_tag user.get_profile_image(100,100) %></p>
-    <p>Name: <%= user.name %></p>
-    <p><%= link_to "Show", user_path(user.id) %></p>
+    <div class="offset-md-1"></div>
+
+    <div class="col-md-8">
+      <h2>Users</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.get_profile_image(100,100) %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-<% end %>
+</div>
