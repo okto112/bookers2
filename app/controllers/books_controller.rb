@@ -21,7 +21,6 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully updated."
       redirect_to book_path(@book.id)
     else
-      flash.now[:notice] = "Book wasn't updated due to an error."
       render :edit
     end
   end
@@ -31,10 +30,13 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       flash[:notice] = "Book was successfully created."
-      redirect_to books_path
+      redirect_to book_path(@book.id)
     else
+      @books = Book.all
+      @user = User.find(current_user.id)
+      @new = Book.new
       flash.now[:notice] = "Book wasn't created due to an error."
-      render :new
+      render :index
     end
   end
 

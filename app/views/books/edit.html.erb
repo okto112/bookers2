@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row justify-content-md-center">
     <div class="col-md-5">
     <h1>Editing Book</h1>
@@ -6,21 +6,32 @@
   </div>
   <div class="row justify-content-md-center">
     <div class="col-md-5">
-    <%= form_with model: @book do |f| %>
+      <% if @book.errors.any? %>
+        <h4>
+          <%= @book.errors.count %> error prohibited this obj from being saved:
+        </h4>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-      <p class="mb-1">Title</p>
-      <%= f.text_field :title, class:"form-control w-100 mb-3" %>
+      <%= form_with model: @book do |f| %>
 
-      <p class="mb-1">Opinion</p>
-      <%= f.text_area :body, class:"form-control w-100 mb-3" %>
+        <p class="mb-1">Title</p>
+        <%= f.text_field :title, class:"form-control w-100 mb-3" %>
 
-      <p><%= f.submit 'Update Book', class:"btn btn-success" %></p>
+        <p class="mb-1">Opinion</p>
+        <%= f.text_area :body, class:"form-control w-100 mb-3" %>
 
-    <% end %>
+        <p><%= f.submit 'Update Book', class:"btn btn-success" %></p>
 
-    <%= link_to 'Show', book_path(@book.id) %>
-    |
-    <%= link_to 'Back', books_path %>
+      <% end %>
+
+      <%= link_to 'Show', book_path(@book.id) %>
+      |
+      <%= link_to 'Back', books_path %>
     </div>
   </div>
 </div>

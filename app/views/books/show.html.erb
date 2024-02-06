@@ -22,7 +22,11 @@
                 <% end %>
               </p>
             </td>
-            <td><%= @book.title %></td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
             <td><%= @book.body %></td>
             <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %></td>
