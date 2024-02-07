@@ -34,8 +34,7 @@ class BooksController < ApplicationController
     else
       @books = Book.all
       @user = User.find(current_user.id)
-      @new = Book.new
-      flash.now[:notice] = "Book wasn't created due to an error."
+      @new = @book
       render :index
     end
   end
