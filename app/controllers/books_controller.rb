@@ -56,7 +56,13 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     user = User.find(book.user_id)
     unless user.id == current_user.id
-      redirect_to users_path
+      redirect_to books_path
+    end
+  end
+
+  def check_login_status
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
   end
 
